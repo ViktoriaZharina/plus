@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(248, 207, 235);
+  background-color: rgb(248, 228, 241);
 }
 h1 {
   font-size: 34px;
@@ -25,14 +25,31 @@ strong {
 button {
   display: block;
   margin: 20px auto;
-  border-radius: 25px;
+  padding: 10px 15px;
+  border-radius: 5px;
   border: 1px solid #8064e9;
-  background: #8064e9;
-  color: #fff;
-  font-size: 16px;
-  line-height: 22px;
-  padding: 16px 24px;
+  background: #e6e2f4;
+  color: #030303;
+  font-size: 12px;
   text-decoration: none;
   transition: all 200ms ease;
   box-shadow: rgba(37, 39, 89, 0.08) 0px 8px 8px 0;
+}
+.container {
+  max-width: 600px;
+  text-align: center;
+  padding: 20px;
+  background-color: #edebf4;
+  border: 2px solid #a28fe4;
+  border-radius: 15px;
+  margin: 20px auto;
+}
+.box {
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+}
+.box input {
+  width: 200px;
+  margin: 0 auto;
 }
