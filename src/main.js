@@ -1,0 +1,1 @@
+prompt("Are you ok?");
