@@ -1,1 +1,1 @@
-prompt("Are you ok?");
+
