@@ -1,5 +1,5 @@
 body {
-  background-color: white;
+  background-color: #b0a4db;
 }
 h1 {
   font-size: 34px;
@@ -38,10 +38,13 @@ button {
 ul {
   list-style: none;
   display: flex;
-  flex-direction: row;
+}
+li {
+  border: 2px solid #030303;
+  padding: 10px;
 }
 .container {
-  max-width: 600px;
+  max-width: 700px;
   text-align: center;
   padding: 20px;
   background-color: #edebf4;
@@ -57,4 +60,9 @@ ul {
 .box input {
   width: 200px;
   margin: 0 auto;
+}
+.enter {
+  width: 60%;
+}
+.enter-input {
 }
