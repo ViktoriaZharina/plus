@@ -11,7 +11,7 @@ let weather = {
     temp: 30.2,
     humidity: 20,
   },
-  "san francisco": {
+  sanfrancisco: {
     temp: 20.9,
     humidity: 100,
   },
@@ -22,8 +22,15 @@ let weather = {
 };
 
 let chooseCity = prompt("What city?");
-if (chooseCity !== weather.value) {
-  alert("Look in another source");
-} else {
-  alert("${weather.temp}");
+chooseCity = chooseCity.toLowerCase();
+if (weather[chooseCity] === undefined) {
+  alert("try another source");
 }
+
+let temper = weather[chooseCity].temp;
+let humidity = weather[chooseCity].humidity;
+let celsiusTemper = Math.round(temper);
+
+alert(
+  `It is ${celsiusTemper}C in ${chooseCity} with a humidity of ${humidity}`
+);
