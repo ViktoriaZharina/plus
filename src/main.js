@@ -1,36 +1,53 @@
-let weather = {
-  paris: {
-    temp: 19.7,
-    humidity: 80,
-  },
-  tokyo: {
-    temp: 17.3,
-    humidity: 50,
-  },
-  lisbon: {
-    temp: 30.2,
-    humidity: 20,
-  },
-  sanfrancisco: {
-    temp: 20.9,
-    humidity: 100,
-  },
-  oslo: {
-    temp: -5,
-    humidity: 20,
-  },
-};
-
-let chooseCity = prompt("What city?");
-chooseCity = chooseCity.toLowerCase();
-if (weather[chooseCity] === undefined) {
-  alert("try another source");
+function displayTemperature(response) {
+  let temperatureElement = document.querySelector("#current-temperature");
+  let temperature = Math.round(response.data.temperature.current);
+  let cityElement = document.querySelector("#current-city");
+  cityElement.innerHTML = response.data.city;
+  temperatureElement.innerHTML = temperature;
 }
 
-let temper = weather[chooseCity].temp;
-let humidity = weather[chooseCity].humidity;
-let celsiusTemper = Math.round(temper);
+function search(event) {
+  event.preventDefault();
+  let searchInputElement = document.querySelector("#search-input");
+  let city = searchInputElement.value;
 
-alert(
-  `It is ${celsiusTemper}C in ${chooseCity} with a humidity of ${humidity}`
-);
+  let apiKey = "a0tb5co4a4c93f329940007c6706d4b9";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function formatDate(date) {
+  let minutes = date.getMinutes();
+  let hours = date.getHours();
+  let day = date.getDay();
+
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  let formattedDay = days[day];
+  return `${formattedDay} ${hours}:${minutes}`;
+}
+
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", search);
+
+let currentDateELement = document.querySelector("#current-date");
+let currentDate = new Date();
+
+currentDateELement.innerHTML = formatDate(currentDate);
